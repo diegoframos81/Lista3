@@ -28,6 +28,8 @@ export class SenhasService {
 
   public senhasAtend:string[] = [];
 
+  public ultimasSenhas:string[]=[]
+  public ultimaSenhaChamada:string = ''
   somaGeral() {
     this.senhaGeralAtend++;
     this.senhasGeral++;
@@ -116,8 +118,15 @@ export class SenhasService {
       this.senhasArray.SG.splice(0, 1);
       console.log('atend geral');
     }
-
+    
+     this.ultimasSenhas = this.senhasAtend.length > 5 ? this.senhasAtend.slice(-5) : this.senhasAtend;
+      this.ultimaSenhaChamada = this.senhasAtend.length == 0 ? "Realize um atendimento!":this.senhasAtend[this.senhasAtend.length - 1];
     console.log(this.senhasArray);
+    console.log(this.senhasAtend);
+    console.log(this.ultimaSenhaChamada);
+    
+
+    
   }
 
 
