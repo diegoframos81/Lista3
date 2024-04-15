@@ -26,7 +26,7 @@ export class SenhasService {
   public senhaGeralAtend: number = 0;
   public qtdPrior: boolean = false;
 
-  public senhasAtend:string[] = [];
+  public senhasAtend: string[] = [];
 
   somaGeral() {
     this.senhaGeralAtend++;
@@ -85,42 +85,40 @@ export class SenhasService {
     console.log(this.senhasArray);
   }
 
-  atendeSenha(){
-    
-    var v:number = 0;
-    var senhaSeparada:string='';
-    var lastAtendedType:string = '';
-    
-    if(this.senhasArray.SE.length == 0 && this.senhasArray.SP.length == 0 && this.senhasArray.SG.length == 0) {
+  atendeSenha() {
+
+    let v: number = 0;
+
+    if (this.senhasArray.SE.length == 0 && this.senhasArray.SP.length == 0 && this.senhasArray.SG.length == 0) {
       console.log('vazio');
+
+
+    } else if (this.senhaPriorAtend > 0) {
+
+      console.log('atende prior');
+      this.qtdPrior = true;
+      this.senhasAtend.push(this.senhasArray.SP[0]);
+      this.senhasArray.SP.splice(0, 1);
+      this.senhaPriorAtend--;
+      v = this.senhasAtend.length;
+
+    } else if ((this.qtdPrior || this.senhaExmAtend > 0)) {
+
+      this.senhasAtend.push(this.senhasArray.SE[0]);
+      this.senhasArray.SE.splice(0, 1);
+      this.senhaExmAtend--;
+      this.qtdPrior = false;
+      console.log("atend exm");
+
     } else {
-      if(this.senhaPriorAtend > 0 && lastAtendedType !== 'SP'){
-        console.log('atende prior');
-        this.qtdPrior = true;
-        this.senhasAtend.push(this.senhasArray.SP[0]);
-        this.senhasArray.SP.splice(0, 1);
-        this.senhaPriorAtend--;
-        v = this.senhasAtend.length;
-        lastAtendedType = 'SP';
-      } else if(lastAtendedType === 'SP' && this.senhasArray.SE.length > 0){
-        console.log("atend exm");
-        this.senhasAtend.push(this.senhasArray.SE[0]);
-        this.senhasArray.SE.splice(0, 1);
-        this.senhaExmAtend--;
-        this.qtdPrior = false;
-        lastAtendedType = 'SE';
-      } else if(this.senhasArray.SG.length > 0){
-        console.log('atend geral');
-        this.senhasAtend.push(this.senhasArray.SG[0]);
-        this.senhaGeralAtend--;
-        this.senhasArray.SG.splice(0, 1);
-        lastAtendedType = 'SG';
-      }
+      this.senhasAtend.push(this.senhasArray.SG[0]);
+      this.senhaGeralAtend--;
+      this.senhasArray.SG.splice(0, 1);
+      console.log('atend geral');
     }
-    
+
     console.log(this.senhasArray);
-    console.log(senhaSeparada);
-}
+  }
 
 
 
