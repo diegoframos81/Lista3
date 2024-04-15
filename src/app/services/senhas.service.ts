@@ -5,6 +5,8 @@ import { SenhasArray } from './ISenhasinterface';
   providedIn: 'root',
 })
 export class SenhasService {
+
+  
   public senhasGeral: number = 0;
 
   public senhasPrior: number = 0;
