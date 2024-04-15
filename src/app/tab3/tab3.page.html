@@ -16,11 +16,11 @@
   <ion-card>
     <ion-card-content>
       <ion-list>
-        <ion-label>Relatório</ion-label>
-        <ion-item>Senhas Emitidas: {{senhasService.senhasTotal}}</ion-item>
-        <ion-item>Senhas Geral: {{senhasService.senhasGeral}}</ion-item>
-        <ion-item>Senhas Prioritárias: {{senhasService.senhasPrior}}</ion-item>
-        <ion-item>Senhas Exame: {{senhasService.senhasExame}}</ion-item>
+        <ion-label>Relatório Geral</ion-label>
+        <ion-item color="warning"><ion-icon id="icones" size="large" name="podium-outline"></ion-icon> Senhas Emitidas: {{senhasService.senhasTotal}}</ion-item>
+        <ion-item color="success"><ion-icon id="icones" size="large" name="document-text-outline"></ion-icon> Senhas Geral: {{senhasService.senhasGeral}}</ion-item>
+        <ion-item color="danger"><ion-icon id="icones" size="large" name="accessibility-outline"></ion-icon> Senhas Prioritárias: {{senhasService.senhasPrior}}</ion-item>
+        <ion-item color="primary"><ion-icon id="icones" size="large" name="bandage-outline"></ion-icon> Senhas Exame: {{senhasService.senhasExame}}</ion-item>
       </ion-list>
     </ion-card-content>
   </ion-card>
