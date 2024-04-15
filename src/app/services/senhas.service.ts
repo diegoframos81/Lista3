@@ -26,7 +26,7 @@ export class SenhasService {
   public senhaGeralAtend: number = 0;
   public qtdPrior: boolean = false;
 
-  public senhasAtend:string[] = [];
+  public senhasAtend: string[] = [];
 
   public ultimasSenhas:string[]=[]
   public ultimaSenhaChamada:string = ''
